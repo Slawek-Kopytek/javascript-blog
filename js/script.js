@@ -1,11 +1,8 @@
-/*document.getElementById('test-button').addEventListener('click', function(){
-    const links = document.querySelectorAll('.titles a');
-    console.log('links:', links);
-  }); */
+
   const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this;
-    console.log('Link was clicked!');
+      console.log('Link was clicked!');
 
     /* [DONE] remove class 'active' from all article links */
 
@@ -22,7 +19,7 @@
 
     /* [DONE] remove class 'active' from all articles */
 
-    const activeArticles = document.querySelectorAll('.posts .active');
+    const activeArticles = document.querySelectorAll('article');
 
     for(let activeArticle of activeArticles){
       activeArticle.classList.remove('active');
@@ -30,18 +27,16 @@
     /* [DONE] get 'href' atribute from the clicked link */
 
     const articleSelector = clickedElement.getAttribute('href');
-      console.log(articleSelector)
+      console.log('was clicked:', articleSelector);
 
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
-    const targetArticle = document.querySelector('article');
-      console.log(targetArticle);
+    const targetArticle = document.querySelector('articleSelector');
+      console.log('was pushed:', targetArticle);
 
-    /* add class 'active' to the correct article */
+    /* [IN PROGRESS] add class 'active' to the correct article */
 
-    clickedElement.targetArticle.add('active');
-      console.log('clickedElement:');
-
+    targetArticle.classList.add('active');
   }
   
   const links = document.querySelectorAll('.titles a');
