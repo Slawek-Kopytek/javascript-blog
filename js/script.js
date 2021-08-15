@@ -31,7 +31,7 @@
 
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
-    const targetArticle = document.querySelector('articleSelector');
+    const targetArticle = document.querySelector(articleSelector);
       console.log('was pushed:', targetArticle);
 
     /* [IN PROGRESS] add class 'active' to the correct article */
