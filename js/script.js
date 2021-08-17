@@ -1,8 +1,8 @@
-
+{
   const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this;
-      console.log('Link was clicked!');
+    console.log('Link was clicked!');
 
     /* [DONE] remove class 'active' from all article links */
 
@@ -34,7 +34,7 @@
     const targetArticle = document.querySelector(articleSelector);
       console.log('was pushed:', targetArticle);
 
-    /* [IN PROGRESS] add class 'active' to the correct article */
+    /* [DONE] add class 'active' to the correct article */
 
     targetArticle.classList.add('active');
   }
@@ -44,3 +44,57 @@
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+
+
+  const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+  function generateTitleLinks(){
+    console.log('generate title links');
+
+    /* [DONE] remove contents of titleList */
+
+    const titleList = document.querySelector(optTitleListSelector);
+    titleList.innerHTML = '';
+    console.log('find titles', titleList);
+
+    /* [IN PROGRESS] for each article */
+
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    let html = '';
+    
+    for(let article of articles){  
+      
+      /* get the article id */
+
+      const articleId = article.getAttribute('id');
+      console.log('Number of link', articleId);
+
+      /* find the title element */
+
+      const article = document.querySelector(optArticleSelector);
+
+      /* get the title from the title element */
+
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      console.log('Article name', articleTitle);
+
+      /* create HTML of the link */
+
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      console.log('Link', linkHTML);
+
+      /* insert link into titleList */
+      titleList.innerHTML = titleList.innerHTML + linkHTML;
+
+      html = html + linkHTML;
+      console.log(html);
+    }
+    
+    titleList.innerHTML = html;
+  }
+
+  generateTitleLinks();
+}
