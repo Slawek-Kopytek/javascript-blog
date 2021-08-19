@@ -34,7 +34,7 @@ const titleClickHandler = function(event){
   /* add class 'active' to the correct article */
 
   targetArticle.classList.add('active');
-}
+};
   
 const links = document.querySelectorAll('.titles a');
   
@@ -43,8 +43,8 @@ for(let link of links){
 }
 
 const optArticleSelector = '.post',
-optTitleSelector = '.post-title',
-optTitleListSelector = '.titles';
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
 
 function generateTitleLinks(){
 
@@ -88,5 +88,5 @@ function generateTitleLinks(){
   }
 }
 
-  generateTitleLinks();
+generateTitleLinks();
 
