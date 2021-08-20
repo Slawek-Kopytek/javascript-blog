@@ -15,7 +15,7 @@ const titleClickHandler = function(event){
   /*  add class 'active' to the clicked link */
 
   clickedElement.classList.add('active');
-    
+
   /* remove class 'active' from all articles */
 
   const activeArticles = document.querySelectorAll('article');
@@ -35,9 +35,9 @@ const titleClickHandler = function(event){
 
   targetArticle.classList.add('active');
 };
-  
+
 const links = document.querySelectorAll('.titles a');
-  
+
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
 }
@@ -58,11 +58,11 @@ function generateTitleLinks(){
   const articles = document.querySelectorAll(optArticleSelector);
 
   let html = '';
-    
-  for(let article of articles){  
-    
+
+  for(let article of articles){
+
     /* get the article id */
-    
+
     const articleId = article.getAttribute('id');
 
     /* find the title element */
@@ -73,13 +73,13 @@ function generateTitleLinks(){
     /* create HTML of the link */
 
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    
+
 
     /* insert link into titleList */
-      
+
     html = html + linkHTML;
   }
-    
+
   titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
   console.log(links);
@@ -89,4 +89,32 @@ function generateTitleLinks(){
 }
 
 generateTitleLinks();
+
+function generateTags(){
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+generateTags();
 
