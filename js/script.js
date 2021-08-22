@@ -44,7 +44,8 @@ for(let link of links){
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(){
 
@@ -82,7 +83,7 @@ function generateTitleLinks(){
 
   titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
-  console.log(links);
+
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
@@ -91,30 +92,46 @@ function generateTitleLinks(){
 generateTitleLinks();
 
 function generateTags(){
-  /* find all articles */
+
+  /* [DONE]find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
+  for (let article of articles){
 
-    /* find tags wrapper */
+    /* [DONE]find tags wrapper */
+    const tagsList = article.querySelector(optArticleTagsSelector);
 
-    /* make html variable with empty string */
+    /* [DONE]make html variable with empty string */
+    let html = '';
 
-    /* get tags from data-tags attribute */
+    /* [DONE]get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
 
-    /* split tags into array */
+    /* [DONE]split tags into array */
+    const articleTagsArray = articleTags.split(' ');
 
-    /* START LOOP: for each tag */
+    /* [DONE]START LOOP: for each tag */
+    for (let tag of articleTagsArray){
 
-      /* generate HTML of the link */
+      /* [DONE]generate HTML of the link */
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
 
-      /* add generated code to html variable */
-
+      /* [DONE]add generated code to html variable */
+      html += linkHTML;
+    }
     /* END LOOP: for each tag */
 
-    /* insert HTML of all the links into the tags wrapper */
+    /* [DONE]insert HTML of all the links into the tags wrapper */
+    tagsList.innerHTML = html;
 
   /* END LOOP: for every article: */
+  }
+  const links = document.querySelectorAll(optArticleTagsSelector);
+
+  for(let link of links){
+    link.addEventListener('click', titleClickHandler);
+  }
 }
 
 generateTags();
-
