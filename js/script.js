@@ -247,27 +247,6 @@ function addClickListenersToTags(){
 
 addClickListenersToTags();
 
-function calculateAuthorsParams(authors) {
-  const params = {
-    max: 0,
-    min: 999999
-  };
-
-  for (let author in authors) {
-    console.log(author + ' is used ' + authors[author] + ' times');
-    params.max = Math.max(authors[author], params.max);
-    params.min = Math.min(authors[author], params.min);
-  }
-  return params;
-}
-
-function calculateAuthorsClass(count, params) {
-  const normalizedCount = count - params.min;
-  const normalizedMax = params.max - params.min;
-  const percentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor(percentage * (opts.cloudClassCount - 1) + 1);
-  return opts.cloudClassPrefix + classNumber;
-}
 
 function generateAuthors(){
 
@@ -311,13 +290,11 @@ function generateAuthors(){
   const authorList = document.querySelector(opts.authorsListSelector);
 
   /* [NEW] create variable for all links HTML code */
-  const authorsParams = calculateAuthorsParams(allAuthors);
-
   let allAuthorsHTML = '';
 
   /* [NEW] START LOOP: for each tag in allAuthors: */
   for (let author in allAuthors) {
-    const authorLinkHTML = '<li><a class="' + calculateAuthorsClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '">' + author + '</a></li>';
+    const authorLinkHTML = '<li><a href="#author-' + author + '">' + author + '</a>(' + allAuthors[author] + ')</li>';
 
     allAuthorsHTML +=authorLinkHTML;
   }
